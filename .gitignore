@@ -1,0 +1,4 @@
+
+*.DS_Store
+.docker_memo_laravel/mysql/data/
+.docker_memo_laravel/mysql/log/
