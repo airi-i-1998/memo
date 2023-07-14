@@ -75,3 +75,7 @@ body {
     padding-bottom: 3em;
     word-break: break-all;
 }
+
+.col-3{
+    width: 100% o !important;
+}
