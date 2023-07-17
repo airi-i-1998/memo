@@ -80,10 +80,115 @@ body {
 
 .left-memo-list {
     overflow-y: auto;
-    height: 85%;
-    padding-bottom: 3em;
+    // height: 85%;
+    padding-top: 1em !important ;
     word-break: break-all;
+    // border-radius: 0;
+    // border-width: 100%;
+    // border-bottom: solid;
+    // border-top:solid;
+    // border-color: black;
 }
 
 
 
+// .row > * {
+//     flex-shrink: 0 ;
+//     width: 25% ;
+//     max-width: 50% ;
+//     padding-right: calc(var(--bs-gutter-x) * 0.5);
+//     padding-left: calc(var(--bs-gutter-x) * 0.5)!important;
+//     margin-top: var(--bs-gutter-y)!important;
+// }
+
+
+
+// .col-9 {
+//     flex: 0 0 auto !important;
+//     width: 100% !important;
+//   }
+  
+//   .w-100 {
+//     width: 100% !important;
+//   }
+  
+// .border-gray {
+//     border-color: gray(0, 0, 0, 0.18) !important;
+//   }
+
+// .m-0 {
+//     margin: 0 !important;
+//     border-right: 1rem solid !important;
+//   }
+
+  :root {
+    --bs-gutter-x: 0.3rem;
+     --bs-gutter-y: 0;
+   }
+
+   .m-0 {
+    margin: 0 !important;
+    border-right: 2px solid !important;
+    border-color: lightgray;
+  }
+
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+    color: var(--bs-list-group-color);
+    text-decoration: none;
+    background-color: var(--bs-list-group-bg);
+    border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+    border-bottom: solid;
+    padding-bottom: 0.7em !important ;
+    padding-top: 1em !important ;
+    padding-right: 0.5em !important;
+    padding-left: 0.5em !important;
+
+  }
+
+//   .list-group-item-action:hover{
+//     background-color: #00CCFF;
+//   }
+
+//   .list-group-item-action:focus {
+//     z-index: 1;
+//     background-color:#00CCFF;
+//   }
+
+  .list-group-item-action:hover,
+.list-group-item-action:focus {
+  z-index: 1;
+//   color: #00CCFF;
+  text-decoration: none;
+  background-color: #00CCFF;
+}
+
+// .list-group-item-action:active {
+// //   color: #00CCFF;
+//   background-color: #00CCFF;
+// }
+
+.list-group-item.active {
+    z-index: 2;
+    color: var(--bs-list-group-active-color);
+    background-color:  #00CCFF;
+    border-color: var(--bs-list-group-active-border-color);
+  }
+
+  .row {
+    --bs-gutter-x: 0.3rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+  }
+
+  .col-9 {
+    flex: 0 0 auto;
+    width: 75%;
+    padding-left: 0.6em;
+}

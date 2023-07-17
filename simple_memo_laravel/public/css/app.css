@@ -3503,23 +3503,6 @@ fieldset:disabled .btn {
   --bs-btn-disabled-border-color: #198754;
 }
 
-.btn-film{
-  ----bs-btn-color: #fff;
-  --bs-btn-bg: #df8ad1;
-  --bs-btn-border-color: #df8ad1;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #eb57d3;
-  --bs-btn-hover-border-color:#f16adb;
-  --bs-btn-focus-shadow-rgb: 60, 153, 110;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #f16adb;
-  --bs-btn-active-border-color: #9e2189;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #df8ad1;
-  --bs-btn-disabled-border-color: #df8ad1;
-}
-
 .btn-info {
   --bs-btn-color: #000;
   --bs-btn-bg: #0dcaf0;
@@ -13950,16 +13933,63 @@ body {
 
 .left-memo-list {
   overflow-y: auto;
-  height: 85%;
-  padding-bottom: 3em;
+  padding-top: 1em !important;
   word-break: break-all;
 }
 
-.border-gray {
-  border-color: rgba(0, 0, 0, 0.18);
+:root {
+  --bs-gutter-x: 0.3rem;
+  --bs-gutter-y: 0;
 }
 
-.border-right {
-  border-right-width: 2ex;
+.m-0 {
+  margin: 0 !important;
+  border-right: 2px solid !important;
+  border-color: lightgray;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+  color: var(--bs-list-group-color);
+  text-decoration: none;
+  background-color: var(--bs-list-group-bg);
+  border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+  border-bottom: solid;
+  padding-bottom: 0.7em !important;
+  padding-top: 1em !important;
+  padding-right: 0.5em !important;
+  padding-left: 0.5em !important;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+  z-index: 1;
+  text-decoration: none;
+  background-color: #00CCFF;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: var(--bs-list-group-active-color);
+  background-color: #00CCFF;
+  border-color: var(--bs-list-group-active-border-color);
+}
+
+.row {
+  --bs-gutter-x: 0.3rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+.col-9 {
+  flex: 0 0 auto;
+  width: 75%;
+  padding-left: 0.6em;
 }
 

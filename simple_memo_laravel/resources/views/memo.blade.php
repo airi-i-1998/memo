@@ -3,7 +3,7 @@
 @section('content')
 <div class="h-100 bg-white">
     <div class="row h-100 m-0 p-0">
-        <div class="col-3 h-100 m-0 p-0 border-left border-right border-gray">
+        <div class="col-3 h-100 m-0 ">
             <div class="left-memo-menu d-flex justify-content-between pt-2">
                 <div class="pl-3 pt-2">
                 {{ $name }}さん、こんにちは。
