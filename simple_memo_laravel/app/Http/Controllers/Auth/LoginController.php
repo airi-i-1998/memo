@@ -24,7 +24,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
+    /**d
      * Where to redirect users after login.
      *
      * @var string
@@ -35,7 +35,7 @@ class LoginController extends Controller
     {
         $request->validate(
             [
-                $this->username() => 'required|max:255|email',
+                $this->username() => 'required|max:255|email|regex:/^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/',
                 'password' => 'required|min:8|max:255|regex:/^[a-zA-Z0-9]+$/',
             ],
             [
@@ -58,5 +58,5 @@ class LoginController extends Controller
     if ($memo) {
         session()->put('select_memo', $memo);
     }
-    }    
+    }        
 }

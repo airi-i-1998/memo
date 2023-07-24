@@ -18,6 +18,7 @@ class CreateMemosTable extends Migration
             $table->bigInteger('user_id');
             $table->string('title')->nullable();
             $table->text('content')->nullable();
+            $table->integer('pick_memo')->nullable();
             $table->timestamps();
         });
     }

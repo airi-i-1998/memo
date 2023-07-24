@@ -12,5 +12,6 @@ class Memo extends Model
         'user_id',
         'title',
         'content',
+        'pick_memo',
     ];
 }
