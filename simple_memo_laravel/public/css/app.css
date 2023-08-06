@@ -13945,7 +13945,7 @@ body {
 .m-0 {
   margin: 0 !important;
   border-right: 2px solid !important;
-  border-color: lightgray;
+  border-color: black;
 }
 
 .list-group-item {
@@ -13995,7 +13995,7 @@ body {
 
 .left-menu {
   position: fixed;
-  border-right: 2px solid black;
+  border-right: 2px solid lightgray;
   height: 100%;
   width: 60px;
   background-color: white;
@@ -14003,6 +14003,10 @@ body {
 
 .btn-memo {
   margin: 10px !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  padding-right: 12px !important;
+  padding-left: 12px !important;
 }
 
 .btn-memo {
@@ -14050,5 +14054,36 @@ body {
 
 .w-70 {
   margin-left: 60px !important;
+}
+
+.te-1 {
+  text-align: center !important;
+  color: black !important;
+}
+
+.btn-image {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #212529;
+  --bs-btn-border-color: #212529;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #424649;
+  --bs-btn-hover-border-color: #373b3e;
+  --bs-btn-focus-shadow-rgb: 66, 70, 73;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #4d5154;
+  --bs-btn-active-border-color: #373b3e;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #212529;
+  --bs-btn-disabled-border-color: #212529;
+  display: none !important;
+}
+
+#thumbnail {
+  height: 100px;
+  max-width: 100px;
+  margin: 10px;
+  border: solid thin lightgray;
+  border-radius: 5px;
 }
 

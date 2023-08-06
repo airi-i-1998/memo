@@ -51,8 +51,8 @@
             <div id="memo-menu">
                 <!-- <button type="submit" class="btn btn-dark" formaction="{{ route('memo.update') }}"><i class="fas fa-cut"></i></button>
                 <button type="submit" class="btn btn-dark" formaction="{{ route('memo.update') }}"><i class="fas fa-regular fa-folder"></i></button> -->
-                <button type="submit" class="btn btn-danger" formaction="{{ route('memo.delete') }}"><i class="fas fa-trash-alt"></i></button>
                 <button type="submit" class="btn btn-success" formaction="{{ route('memo.update') }}"><i class="fas fa-save"></i></button>
+                <button type="submit" class="btn btn-danger" formaction="{{ route('memo.delete') }}"><i class="fas fa-trash-alt"></i></button>
 
             </div>
             <input type="text" id="memo-title" name="edit_title" placeholder="タイトルを入力する..." value="{{ $select_memo->title }}" />

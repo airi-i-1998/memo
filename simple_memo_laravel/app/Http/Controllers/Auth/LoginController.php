@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/memo';
+    protected $redirectTo = '/memoselect';
     
     protected function validateLogin(Request $request)
     {
@@ -53,10 +53,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function authenticated(Request $request, $user){
-    $memo = Memo::where('user_id', '=', Auth::id())->orderBy('updated_at', 'desc')->first();
-    if ($memo) {
-        session()->put('select_memo', $memo);
-    }
+    protected function authenticated(Request $request, $user)
+    {
+        $memo = Memo::where('user_id', '=', Auth::id())
+        ->orderBy('updated_at', 'desc')
+        ->first();
+        if ($memo) {
+            session()->put('select_memo', $memo);
+        }
     }        
 }

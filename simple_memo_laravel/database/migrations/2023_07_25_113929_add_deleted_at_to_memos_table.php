@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +13,14 @@ class AddDeletedAtToMemosTable extends Migration
     public function up()
     {
         Schema::table('memos', function (Blueprint $table) {
-            $table->datetime('deleted_at');
+            $table->softDeletes();
         });
     }
 
+    public function softDeletes($column = 'deleted_at', $precision = 0)
+    {
+        return $this->datetime($column, $precision)->nullable();
+    }
     /**
      * Reverse the migrations.
      *
@@ -26,6 +29,7 @@ class AddDeletedAtToMemosTable extends Migration
     public function down()
     {
         Schema::table('memos', function (Blueprint $table) {
+            //
         });
     }
 }

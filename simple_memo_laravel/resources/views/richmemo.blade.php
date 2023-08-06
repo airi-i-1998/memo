@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.app')
 @section('content')
 <div class="left-menu">
@@ -47,16 +44,25 @@
         </div>
         <div class="col-9 h-100">
         @if ($select_memo)
-        <form class="w-100 h-100" method="post">
+        <form class="w-100 h-100" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="edit_id" value="{{ $select_memo->id }}" />
             <div id="memo-menu">
-                <button type="submit" class="btn btn-dark" formaction="{{ route('richmemo.update') }}"><i class="fas fa-cut"></i></button>
-                <button type="submit" class="btn btn-dark" formaction="{{ route('richmemo.update') }}"><i class="fas fa-regular fa-folder"></i></button>
-                <button type="submit" class="btn btn-danger" formaction="{{ route('richmemo.delete') }}"><i class="fas fa-trash-alt"></i></button>
-                <button type="submit" class="btn btn-success" formaction="{{ route('richmemo.update') }}"><i class="fas fa-save"></i></button>
+                <button type="submit" class="btn btn-dark" formaction="{{route('richmemo.deleted_at') }}"><i class="fas fa-cut"></i></button>
+                <button type="submit" class="btn btn-success" formaction="{{route('richmemo.update') }}"><i class="fas fa-save"></i></button>
+                <button type="submit" class="btn btn-danger" formaction="{{route('richmemo.delete') }}"><i class="fas fa-trash-alt"></i></button>
+                <label>
+                    <input type="file" onchange="onChangeFileInput(this)" name="image" class="btn btn-image"/><i class="fas fa-regular fa-folder"></i>
+                </label>
             </div>
             <input type="text" id="memo-title" name="edit_title" placeholder="タイトルを入力する..." value="{{ $select_memo->title }}" />
+            
+            @if ($select_image) 
+                <img id="thumbnail" accept="image/*" src="{{asset($select_image->path)}}">
+            @else
+                <img id="thumbnail" accept="image/*" src="{{asset('/images/icon_add.png')}}">
+            @endif
+    
             <textarea id="memo-content" name="edit_content" placeholder="内容を入力する...">{{ $select_memo->content }}</textarea>
         </form>
         @else
@@ -64,7 +70,12 @@
             <i class="fas fa-info-circle"></i>メモを新規作成するか選択してください。
         </div>
         @endif
-        </div>
+        <script src="{{ asset('/js/script.js') }}"></script>
     </div>
 </div>
+</div>
 @endsection
+
+
+
+

@@ -5,6 +5,8 @@ use App\Http\Controllers\MemoController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RichmemoController;
+use App\Http\Controllers\ImageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,23 +22,33 @@ Route::get('/', [LoginController::class, 'showLoginForm'])->name('login.index');
 Route::get('/user', [RegisterController::class, 'showRegistrationForm'])->name('user.register');
 Route::post('/user/register', [RegisterController::class, 'register'])->name('user.exec.register');
 
+Route::get('/memoselect', function() {
+    return view("memoselect");
+})->name('memoselect.index');
+    
+// ルート：メモ
 Route::group(['middleware' => ['auth']], function() {
-Route::get('/memo', [MemoController::class, 'index'])->name('memo.index');
-Route::get('/memo/add', [MemoController::class, 'add'])->name('memo.add');
-Route::get('/memo/select',[MemoController::class,'select'])->name('memo.select');
-Route::post('/memo/update', [MemoController::class, 'update'])->name('memo.update');
-Route::post('/memo/delete', [MemoController::class, 'delete'])->name('memo.delete');
-Route::get('logout', [LoginController::class, 'logout'])->name('memo.logout');
+    Route::get('/memo', [MemoController::class, 'index'])->name('memo.index');
+    Route::get('/memo/add', [MemoController::class, 'add'])->name('memo.add');
+    Route::get('/memo/select',[MemoController::class,'select'])->name('memo.select');
+    Route::post('/memo/update', [MemoController::class, 'update'])->name('memo.update');
+    Route::post('/memo/delete', [MemoController::class, 'delete'])->name('memo.delete');
+    Route::get('logout', [LoginController::class, 'logout'])->name('memo.logout');
+});
+// ルート：リッチメモ
+Route::group(['middleware'=>['auth']],function(){
+    Route::get('/richmemo',[RichmemoController::class,'index'])->name('richmemo.index');
+    Route::get('/richmemo/add',[RichmemoController::class, 'add'])->name('richmemo.add');
+    Route::get('/richmemo/select',[RichmemoController::class,'select'])->name('richmemo.select');
+    Route::get('/richmemo/update', [RichmemoController::class, 'update'])->name('richmemo.update');
+    Route::post('/richmemo/update', [RichmemoController::class, 'update'])->name('richmemo.update');
+    Route::post('/richmemo/delete', [RichmemoController::class, 'delete'])->name('richmemo.delete');
+    Route::post('/richmemo/deleted_at', [RichmemoController::class, 'deleted_at'])->name('richmemo.deleted_at');
 });
 
-Route::group(['middleware'=>['auth']],function(){
-Route::get('/richmemo',[RichmemoController::class,'index'])->name('richmemo.index');
-Route::get('/richmemo/add', [RichmemoController::class, 'add'])->name('richmemo.add');
-Route::get('/richmemo/select',[RichmemoController::class,'select'])->name('richmemo.select');
-Route::post('/richmemo/update', [RichmemoController::class, 'update'])->name('richmemo.update');
-Route::post('/richmemo/delete', [RichmemoController::class, 'delete'])->name('richmemo.delete');
-// Route::get('logout', [LoginController::class, 'logout'])->name('richmemo.logout');
-});
+
+   
+
 
 Auth::routes();
 

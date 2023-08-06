@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Memo;
+use App\Enums\MemoType;
 // Authファサードを読み込む＝現在ログインしているユーザーの情報を取得することができる
 // ファサード：メソッドを実行できるようにしてくれる機能
 // ・現在認証しているユーザーのID番号を取得　$user_id = Auth::id();
@@ -11,46 +12,28 @@ use Illuminate\Http\Request;
 
 class MemoController extends Controller
 {
+
+    
     public function index()
     {
-        $memos = Memo::where('user_id', Auth::id())
-        ->where('pick_memo','=',1)
+        $memo = Memo::where('user_id', '=', Auth::id())
         ->orderBy('updated_at', 'desc')
+        ->where('pick_memo',MemoType::MEMO)
+        ->first();
+        if ($memo) {
+            session()->put('select_memo', $memo);
+        }
+        $memos = Memo::where('user_id', Auth::id())
+        ->orderBy('updated_at', 'desc')
+        ->where('pick_memo',MemoType::MEMO)
         ->get();
-        // dd($memos = Memo::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->toArray());
-        // $memos = Memo::where('user_id', Auth::id())->orderBy('updated_at')->get();
-
+        
         return view('memo',[
             'name' => $this->getLoginUserName(),
             'memos' => $memos,
             'select_memo'=>session()->get('select_memo')
     ]); 
     }
-
-    // public function pick()
-    // {
-    //     $pick_1 = Memo::where('pick_memo',1)
-    //     -get();
-    //     return view('memo',[
-    //         'pick_1'=>$pick_1,
-    //     ]);
-
-    // }
-
-    // public function richIndex()
-    // {
-        // パラメータが渡ってくるのを確認したら、memoテーブルのpickmemoに対してどのように検索クエリを投げれるか調べる
-    
-        
-        // Auth::id()の代わりにMemoテーブルのpickmemoカラムを指定する
-    //     $memos = Memo::where('user_id', Auth::id())->and('pick_memo',true)->orderBy('updated_at', 'desc')->get();
-
-    // return view('memo',[
-    //     'name' => $this->getLoginUserName(),
-    //     'memos' => $memos,
-    //     'select_memo'=>session()->get('select_memo')
-    // ]); 
-    // }
 
     public function add()
     {
@@ -71,9 +54,9 @@ class MemoController extends Controller
         $memo->content = $request->edit_content;
 
         if ($memo->update()) {
-            session()->put('select_richmemo', $memo);
+            session()->put('select_memo', $memo);
         } else {
-            session()->remove('select_richmemo');
+            session()->remove('select_memo');
         }
 
         return redirect()->route('memo.index');
@@ -101,7 +84,15 @@ class MemoController extends Controller
         $memo = Memo::find($request->id);
         session()->put('select_memo',$memo);
 
-        return redirect()->route('memo.index');
+        $memos =Memo::where('user_id',Auth::id())
+        ->where('pick_memo',MemoType::MEMO)
+        ->orderBy('updated_at','desc')
+        ->get();
+        return view('memo',[
+            'name' => $this->getLoginUserName(),
+            'memos' => $memos,
+            'select_memo'=>session()->get('select_memo'),
+        ]);;
 
     }
 
@@ -112,6 +103,4 @@ class MemoController extends Controller
 
         return redirect()->route('memo.index');
     }
-
-
 }
